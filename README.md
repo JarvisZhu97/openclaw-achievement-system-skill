@@ -4,305 +4,305 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-green)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
-> 一个魔幻的隐藏成就系统，为你的 OpenClaw 体验增添惊喜与乐趣！
+> A magical hidden achievement system that adds surprise and fun to your OpenClaw experience!
 
-[English](#english) | [日本語](#japanese)
-
----
-
-## ✨ 特性
-
-- 🎭 **职业个性化** - 根据你的职业生成专属成就（医药研发/程序员/研究员/管理者/学生）
-- 🎬 **流行文化梗** - 融入电影、游戏、动漫、Meme、历史等丰富文化梗
-- 🔒 **完全隐藏** - 成就触发前完全保密，触发后揭晓惊喜
-- 💝 **情绪价值** - 温暖、鼓励、惊喜的文案与视觉奖励
-- 🌐 **多语言支持** - 中文、English、日本語
+[简体中文](#chinese) | [日本語](#japanese)
 
 ---
 
-## 📦 安装
+## ✨ Features
 
-### 方法 1: 直接复制
+- 🎭 **Profession-based Personalization** - Generate exclusive achievements based on your profession (Pharma/Programmer/Researcher/Manager/Student)
+- 🎬 **Pop Culture References** - Rich cultural memes from movies, games, anime, internet culture, and history
+- 🔒 **Completely Hidden** - Achievements remain secret until triggered, then reveal surprises
+- 💝 **Emotional Rewards** - Warm, encouraging, and surprising messages with visual effects
+- 🌐 **Multi-language Support** - English, 中文 (Chinese), 日本語 (Japanese)
+
+---
+
+## 📦 Installation
+
+### Method 1: Clone Repository
 
 ```bash
-# 克隆到 OpenClaw 技能目录
+# Clone to OpenClaw skills directory
 cd ~/.openclaw/workspace/skills
 git clone https://github.com/YOUR_USERNAME/openclaw-magic-achievement.git magic-achievement-system
 ```
 
-### 方法 2: 手动安装
+### Method 2: Manual Installation
 
-1. 下载本仓库
-2. 复制到 OpenClaw 技能目录：
+1. Download this repository
+2. Copy to OpenClaw skills directory:
    ```bash
    cp -r magic-achievement-system ~/.openclaw/workspace/skills/
    ```
 
 ---
 
-## 🚀 使用方法
+## 🚀 Usage
 
-### 步骤 1: 初始化
+### Step 1: Initialize
 
 ```python
 from magic_achievement_system import MagicAchievementSystem, ask_user_preferences
 
-# 显示初始化提示
+# Display initialization prompt
 pref = ask_user_preferences()
 print(pref["message"])
-# 用户回复格式: "pharma zh"
+# User replies with format: "pharma en"
 ```
 
-### 步骤 2: 创建系统实例
+### Step 2: Create System Instance
 
 ```python
-# 根据用户选择创建系统
+# Create system based on user selection
 magic = MagicAchievementSystem(
     player_name="Jarvis",
-    language="zh",          # zh / en / ja
+    language="en",          # en / zh / ja
     profession="pharma"     # pharma / programmer / researcher / manager / student
 )
 ```
 
-### 步骤 3: 检测成就触发
+### Step 3: Detect Achievement Triggers
 
 ```python
-# 1. 关键词触发 - 用户输入时检测
-result = magic.check_message("今晚月亮好圆啊")
+# 1. Keyword Trigger - Detect on user input
+result = magic.check_message("The moon is so beautiful tonight")
 if result:
     print(result["display_message"])
-    # 解锁: 🌙 去月球
+    # Unlocks: 🌙 To The Moon
 
-# 2. 时间触发 - 会话开始时检测
+# 2. Time Trigger - Check at session start
 from datetime import datetime
 result = magic.check_time(datetime.now())
 if result:
     print(result["display_message"])
-    # 可能解锁: 🦉 午夜守望者
+    # May unlock: 🦉 Midnight Watcher
 
-# 3. 累计触发 - 行为完成后检测
+# 3. Count Trigger - Check after actions
 result = magic.increment_counter("pdf_processed")
 if result:
     print(result["display_message"])
-    # 达到里程碑时解锁相应成就
+    # Unlocks milestone achievements
 ```
 
-### 便捷函数
+### Convenience Functions
 
 ```python
 from magic_achievement_system import check_achievement, get_status
 
-# 快速检查成就
+# Quick achievement check
 message = check_achievement(
     player_name="Jarvis",
     trigger_type="message",  # message / time / counter
-    trigger_data="今晚月亮好圆",
-    language="zh",
+    trigger_data="The moon is beautiful",
+    language="en",
     profession="pharma"
 )
 if message:
     print(message)
 
-# 获取玩家状态
+# Get player status
 status = get_status("Jarvis")
-print(f"已解锁 {status['total_unlocked']} 个成就")
+print(f"Unlocked {status['total_unlocked']} achievements")
 ```
 
 ---
 
-## 🎯 触发机制
+## 🎯 Trigger Mechanisms
 
-### 1️⃣ 关键词触发
+### 1️⃣ Keyword Triggers
 
-检测用户输入中的特定关键词：
+Detect specific keywords in user input:
 
-| 关键词 | 成就 | 文化梗 |
-|--------|------|--------|
-| 月亮/moon | 去月球 | 电影《去月球》 |
-| 梦/dream | 盗梦空间建筑师 | 电影《盗梦空间》 |
-| 代码/code | 黑客帝国觉醒者 | 电影《黑客帝国》 |
-| 化合物/分子 | 分子魔法师 | 哈利波特 |
-| CDE/审评 | 监管忍者 | 忍者文化 |
-| bug/debug | Bug猎人 | 程序员文化 |
-| 真香 | 真香定律 | 王境泽梗 |
+| Keyword | Achievement | Cultural Reference |
+|---------|-------------|-------------------|
+| moon/luna | To The Moon | Movie "To The Moon" |
+| dream | Inception Architect | Movie "Inception" |
+| code/programming | Matrix Awakened | Movie "The Matrix" |
+| compound/molecule | Molecular Magician | Harry Potter |
+| CDE/regulatory | Regulatory Ninja | Ninja culture |
+| bug/debug | Bug Hunter | Programmer culture |
+| yyds/goat | GOAT | Internet slang |
 
-### 2️⃣ 时间触发
+### 2️⃣ Time Triggers
 
-基于使用时间的成就：
+Time-based achievements:
 
-| 时间段 | 成就 | 稀有度 |
-|--------|------|--------|
-| 00:00-06:00 | 午夜守望者 | 🥈 稀有 |
-| 06:00-09:00 | 早起鸟 | 🥉 普通 |
-| 22:00-24:00 | 夜猫子 | 🥉 普通 |
-| 周末 | 周末战士 | 🥉 普通 |
+| Time Period | Achievement | Rarity |
+|-------------|-------------|--------|
+| 00:00-06:00 | Midnight Watcher | 🥈 Rare |
+| 06:00-09:00 | Early Bird | 🥉 Common |
+| 22:00-24:00 | Night Owl | 🥉 Common |
+| Weekend | Weekend Warrior | 🥉 Common |
 
-### 3️⃣ 累计次数触发
+### 3️⃣ Count Triggers
 
-行为里程碑成就：
+Behavior milestone achievements:
 
-| 行为 | 里程碑 | 成就 | 稀有度 |
-|------|--------|------|--------|
-| 发送消息 | 1/10/100/1000 | 初次见面/话匣子/话痨/聊天达人 | 🥉/🥉/🥈/🥇 |
-| 完成任务 | 1/10/50/100 | 新手村毕业/任务达人/任务机器/满级大佬 | 🥉/🥈/🥇/💎 |
-| 处理PDF | 1/10/50/100 | PDF新手/PDF熟练工/PDF征服者/PDF大师 | 🥉/🥉/🥈/🥇 |
-| 创建Excel | 1/10/50 | 表格新手/表格达人/表格魔术师 | 🥉/🥈/🥇 |
-
----
-
-## 🏅 稀有度等级
-
-| 等级 | 图标 | 数量占比 |
-|------|------|----------|
-| 普通 | 🥉 | ~40% |
-| 稀有 | 🥈 | ~30% |
-| 史诗 | 🥇 | ~20% |
-| 传说 | 💎 | ~8% |
-| 神话 | 👑 | ~2% |
+| Action | Milestones | Achievements | Rarity |
+|--------|------------|--------------|--------|
+| Send messages | 1/10/100/1000 | First Meeting/Chatterbox/Talkative/Chat Master | 🥉/🥉/🥈/🥇 |
+| Complete tasks | 1/10/50/100 | Newbie Graduate/Task Master/Task Machine/Max Level Boss | 🥉/🥈/🥇/💎 |
+| Process PDFs | 1/10/50/100 | PDF Newbie/PDF Skilled/PDF Conqueror/PDF Master | 🥉/🥉/🥈/🥇 |
+| Create Excel | 1/10/50 | Excel Newbie/Excel Master/Excel Magician | 🥉/🥈/🥇 |
 
 ---
 
-## 📁 文件结构
+## 🏅 Rarity Levels
+
+| Level | Icon | Distribution |
+|-------|------|--------------|
+| Common | 🥉 | ~40% |
+| Rare | 🥈 | ~30% |
+| Epic | 🥇 | ~20% |
+| Legendary | 💎 | ~8% |
+| Mythic | 👑 | ~2% |
+
+---
+
+## 📁 File Structure
 
 ```
 magic-achievement-system/
-├── SKILL.md                              # 详细技能文档
-├── README.md                             # 本文件
+├── SKILL.md                              # Detailed skill documentation
+├── README.md                             # This file
 ├── scripts/
-│   └── magic_achievement_system.py      # 核心代码
+│   └── magic_achievement_system.py      # Core code
 ├── assets/
-│   ├── visual_effects.json              # 视觉特效配置（可选）
-│   ├── language_config.json             # 多语言配置（可选）
-│   └── personalized_config.json         # 个性化配置（可选）
-└── examples/                             # 示例代码
+│   ├── visual_effects.json              # Visual effects config (optional)
+│   ├── language_config.json             # Multi-language config (optional)
+│   └── personalized_config.json         # Personalization config (optional)
+└── examples/                             # Example code
     ├── basic_usage.py
     └── integration_example.py
 ```
 
 ---
 
-## 🔧 高级配置
+## 🔧 Advanced Configuration
 
-### 自定义关键词触发
+### Custom Keyword Triggers
 
 ```python
-# 在初始化后添加自定义关键词
-magic.keyword_triggers[r"自定义关键词"] = "custom_achievement"
+# Add custom keywords after initialization
+magic.keyword_triggers[r"custom_keyword"] = "custom_achievement"
 
-# 添加对应的成就模板
+# Add corresponding achievement template
 from magic_achievement_system import Achievement, Rarity
 
 magic.achievements["custom_achievement"] = Achievement(
     id="custom_achievement",
-    name="自定义成就",
+    name="Custom Achievement",
     name_en="Custom Achievement",
     name_ja="カスタム実績",
-    description="这是一个自定义成就",
-    trigger_condition="触发条件",
-    reference="自定义文化梗",
+    description="This is a custom achievement",
+    trigger_condition="Trigger condition",
+    reference="Custom cultural reference",
     rarity=Rarity.EPIC,
     category="custom",
 )
 ```
 
-### 自定义累计里程碑
+### Custom Count Milestones
 
 ```python
-# 添加新的计数器里程碑
+# Add new counter milestones
 magic.count_triggers["my_custom_action"] = {
-    5: {"id": "custom_5", "name": "自定义5次", "rarity": Rarity.COMMON},
-    10: {"id": "custom_10", "name": "自定义10次", "rarity": Rarity.RARE},
+    5: {"id": "custom_5", "name": "Custom 5 Times", "rarity": Rarity.COMMON},
+    10: {"id": "custom_10", "name": "Custom 10 Times", "rarity": Rarity.RARE},
 }
 ```
 
 ---
 
-## 🎨 成就解锁效果示例
+## 🎨 Achievement Unlock Effect Example
 
 ```
 ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
 
-叮叮~ 🥇 史诗成就解锁 🥇 叮叮~
+Ding Ding~ 🥇 Epic Achievement Unlocked 🥇 Ding Ding~
 
-💫 **去月球** 💫
+💫 **To The Moon** 💫
 
-飞向月球的美好愿望
-📚 文化梗: 电影《去月球》/ Fly Me to the Moon
-🎯 触发条件: 询问关于月亮的信息
+A beautiful wish to fly to the moon
+📚 Reference: Movie "To The Moon" / Fly Me to the Moon
+🎯 Trigger: Ask about the moon
 
-📊 收集进度: 10 / 500+
+📊 Collection Progress: 10 / 500+
 
 ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
 ```
 
 ---
 
-## 🤝 贡献
+## 🤝 Contributing
 
-欢迎提交 Issue 和 Pull Request！
+Welcome to submit Issues and Pull Requests!
 
-### 添加新的成就
+### Adding New Achievements
 
-1. 在 `KEYWORD_TRIGGERS` 中添加关键词映射
-2. 在 `ACHIEVEMENT_TEMPLATES` 中添加成就定义
-3. 提交 PR 并说明文化梗来源
+1. Add keyword mapping in `KEYWORD_TRIGGERS`
+2. Add achievement definition in `ACHIEVEMENT_TEMPLATES`
+3. Submit PR with cultural reference explanation
 
-### 添加新的文化梗类别
+### Adding New Cultural Meme Categories
 
-支持的文化梗类别：
-- 🎥 电影梗
-- 🎮 游戏梗
-- 📜 历史梗
-- 😂 Meme梗
-- 📺 动漫梗
+Supported cultural meme categories:
+- 🎥 Movie references
+- 🎮 Game references
+- 📜 History references
+- 😂 Internet memes
+- 📺 Anime references
 
 ---
 
 ## 📄 License
 
-MIT License - 详见 [LICENSE](LICENSE) 文件
+MIT License - See [LICENSE](LICENSE) file for details
 
 ---
 
-## 🙏 致谢
+## 🙏 Acknowledgments
 
-- [OpenClaw](https://openclaw.ai) - 强大的 AI 助手平台
-- 所有贡献者和用户的支持
-
----
-
-## 📮 联系我们
-
-- GitHub Issues: [提交问题](https://github.com/YOUR_USERNAME/openclaw-magic-achievement/issues)
-- Discussions: [参与讨论](https://github.com/YOUR_USERNAME/openclaw-magic-achievement/discussions)
+- [OpenClaw](https://openclaw.ai) - Powerful AI assistant platform
+- All contributors and users
 
 ---
 
-<h2 id="english">🇬🇧 English</h2>
+## 📮 Contact Us
 
-A magical hidden achievement system for OpenClaw with multi-language support and pop culture references.
+- GitHub Issues: [Submit Issue](https://github.com/YOUR_USERNAME/openclaw-magic-achievement/issues)
+- Discussions: [Join Discussion](https://github.com/YOUR_USERNAME/openclaw-magic-achievement/discussions)
 
-### Features
+---
 
-- 🎭 **Profession-based achievements** (Pharma/Programmer/Researcher/Manager/Student)
-- 🎬 **Pop culture references** (Movies/Games/Anime/Memes/History)
-- 🔒 **Completely hidden** until triggered
-- 💝 **Emotional rewards** with visual effects
-- 🌐 **Multi-language** support (EN/ZH/JA)
+<h2 id="chinese">🇨🇳 简体中文</h2>
 
-### Quick Start
+一个魔幻的隐藏成就系统，为 OpenClaw 用户提供个性化、惊喜的成就收集体验。
+
+### 特性
+
+- 🎭 职业个性化（医药研发/程序员/研究员/管理者/学生）
+- 🎬 流行文化梗（电影/游戏/动漫/Meme/历史）
+- 🔒 完全隐藏 - 触发前完全保密
+- 💝 情绪价值奖励
+- 🌐 多语言支持（中/英/日）
+
+### 快速开始
 
 ```python
 from magic_achievement_system import MagicAchievementSystem
 
 magic = MagicAchievementSystem(
     player_name="YourName",
-    language="en",
-    profession="programmer"
+    language="zh",
+    profession="pharma"
 )
 
-# Check keyword triggers
-result = magic.check_message("I love coding")
+# 检测关键词触发
+result = magic.check_message("今晚月亮好圆")
 if result:
     print(result["display_message"])
 ```
@@ -315,11 +315,11 @@ OpenClaw向けの魔法の隠し実績システム。
 
 ### 特徴
 
-- 🎭 **職業別実績**（医薬品開発/プログラマー/研究者/管理者/学生）
-- 🎬 **ポップカルチャー梗**（映画/ゲーム/アニメ/ミーム/歴史）
-- 🔒 **完全な秘密** - 解放されるまで非表示
-- 💝 **感情的報酬** - 視覚効果付き
-- 🌐 **多言語対応**（日本語/英語/中国語）
+- 🎭 職業別実績（医薬品開発/プログラマー/研究者/管理者/学生）
+- 🎬 ポップカルチャー梗（映画/ゲーム/アニメ/ミーム/歴史）
+- 🔒 完全な秘密 - 解放されるまで非表示
+- 💝 感情的報酬 - 視覚効果付き
+- 🌐 多言語対応（日本語/英語/中国語）
 
 ### クイックスタート
 
